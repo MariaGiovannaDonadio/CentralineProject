@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class MainGET {
@@ -12,7 +14,7 @@ public class MainGET {
 
         URL url;
         try {
-            url = new URL("https://swh.fi.ibimet.cnr.it:8442/swhrest2/rest/download/j_get_mobile_data/station_name/year/doy/n_days/language");
+            url = new URL("https://swh.fi.ibimet.cnr.it:8442/swhrest2/rest/download/j_get_mobile_data/SMART55/2021/1/1/IT");
                 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -23,7 +25,7 @@ public class MainGET {
                 throw new RuntimeException("HttpResponseCode: " + responsecode);
             } else {
 
-                String inline = "station_name";
+                String inline = "";
                 Scanner scanner = new Scanner(url.openStream());
 
                 //Write all the JSON data into a string using a scanner
@@ -38,26 +40,26 @@ public class MainGET {
                 JSONParser parse = new JSONParser();
                 JSONObject data_obj = (JSONObject) parse.parse(inline);
 
-                //Get the required object from the above created object
-                JSONObject obj = (JSONObject) data_obj.get("Global");
+                // //Get the required object from the above created object
+                // JSONObject obj = (JSONObject) data_obj.get("Global");
 
-                //Get the required data using its key
-                System.out.println(obj.get("TotalRecovered"));
+                // //Get the required data using its key
+                System.out.println(data_obj);
 
-                JSONArray arr = (JSONArray) data_obj.get("Countries");
+                // JSONArray arr = (JSONArray) data_obj.get("Countries");
 
-                for (int i = 0; i < arr.size(); i++) {
+                // for (int i = 0; i < arr.size(); i++) {
 
-                    JSONObject new_obj = (JSONObject) arr.get(i);
+                //     JSONObject new_obj = (JSONObject) arr.get(i);
 
-                    if (new_obj.get("Slug").equals("albania")) {
-                        System.out.println("Total Recovered: " + new_obj.get("TotalRecovered"));
-                        break;
-                    }
-                }
+                //     if (new_obj.get("Slug").equals("albania")) {
+                //         System.out.println("Total Recovered: " + new_obj.get("TotalRecovered"));
+                //         break;
+                //     }
+                // }
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
