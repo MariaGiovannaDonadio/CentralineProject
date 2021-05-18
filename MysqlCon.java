@@ -16,11 +16,11 @@ public class  MysqlCon{
 			myStmt = myConn.createStatement();
 			
 			// 3. Execute SQL query
-			myRs = myStmt.executeQuery("select * from Centralina");
+			myRs = myStmt.executeQuery("select * from Osservazioni");
 			
 			// 4. Process the result set
 			while (myRs.next()) {
-				System.out.println(myRs.getString("Nome") + ", " + myRs.getString("xCoordinate"));
+				System.out.println(myRs.getString("Valore") + ", " + myRs.getString("DataState"));
 			}
 		}
 		catch (Exception exc) {
