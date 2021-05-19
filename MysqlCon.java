@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class  MysqlCon{
+public class  MysqlCon {
 
 	public static void main(String[] args) throws SQLException {
 
