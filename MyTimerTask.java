@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class MyTimerTask extends TimerTask {
 
@@ -13,16 +14,28 @@ public class MyTimerTask extends TimerTask {
     private void completeTask() {
         try {
             JSONObject jdata;
-            for (String centraline:MysqlCon.getCentraline()){
-                jdata = FetchData.getData(centraline);
-                
+            for (Centralina centralina:MysqlCon.getCentraline()){
+                ArrayList<Sensore> sensori = MysqlCon.getSensori(centralina.getId());
+                jdata = FetchData.getData(centralina.getNome());              
                  JSONArray c = jdata.getJSONArray("data");
                     for (int i = 0 ; i < c.length(); i++) {
                         JSONObject obj = c.getJSONObject(i);
-                        String A = obj.getString("A");
-                        String B = obj.getString("B");
-                        String C = obj.getString("C");
-                        System.out.println(A + " " + B + " " + C);
+                        String data = obj.getString("data");
+                        float rh = obj.getFloat("RH");
+                        Sensore s = Helper.findSensore(sensori, "RH");
+                        if(s != null){
+                            MysqlCon.insertOsservatione(rh, data, s.getId());
+                        }
+                        float pm10 = obj.getFloat("PM10");
+                        float co2 = obj.getFloat("CO2");
+                        float pm25 = obj.getFloat("PM2.5");
+                        float o3 = obj.getFloat("O3");
+                        float voc = obj.getFloat("VOC");
+                        float noa = obj.getFloat("NO_A");
+                        float t = obj.getFloat("T");
+                        float no2 = obj.getFloat("NO2");
+                        float co = obj.getFloat("CO");
+                        float no2a = obj.getFloat("NO2_A");
                 }
             }
         } catch (Exception e) {

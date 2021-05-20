@@ -5,8 +5,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import com.mysql.cj.xdevapi.JsonString;
+
+import org.json.JSONObject;
 
 public class FetchData {
     public static JSONObject getData(String centraline) {
@@ -35,13 +36,12 @@ public class FetchData {
    
                 while (scanner.hasNext()) {
                     inline += scanner.nextLine();
-                }
-   
+                }  
+                
                 scanner.close();
-   
-                JSONParser parse = new JSONParser();
-                JSONObject data_obj = (JSONObject) parse.parse(inline);
-   
+                
+                JSONObject data_obj = new JSONObject(inline);
+
                 //System.out.println(data_obj);
                 return data_obj;
             }
