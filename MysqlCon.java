@@ -63,8 +63,8 @@ public class  MysqlCon {
 			myStmt = myConn.createStatement();
 			
 			// 3. Execute SQL query
-			myStmt.executeQuery("INSERT INTO Osservazioni VALUES ("+valore+","+date+","+idSensore+")");
-			
+			//myStmt.executeQuery("INSERT INTO Osservazioni VALUES ("+valore+","+date+","+idSensore+")");
+			System.out.println("INSERT INTO Osservazioni VALUES ("+valore+","+date+","+idSensore+")");
 		}
 		catch (Exception exc) {
 			exc.printStackTrace();

@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class FetchData {
-    public static void getData(String centraline) {
+    public static JSONObject getData(String centraline) {
 
         URL url;
         try {
@@ -42,12 +42,12 @@ public class FetchData {
                 JSONParser parse = new JSONParser();
                 JSONObject data_obj = (JSONObject) parse.parse(inline);
    
-                System.out.println(data_obj);
+                //System.out.println(data_obj);
+                return data_obj;
             }
-   
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return null;   
     }
 }

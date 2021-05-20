@@ -1,6 +1,7 @@
 import java.util.Timer;
 import java.util.TimerTask;
-
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 public class MyTimerTask extends TimerTask {
 
@@ -11,8 +12,18 @@ public class MyTimerTask extends TimerTask {
 
     private void completeTask() {
         try {
+            JSONObject jdata;
             for (String centraline:MysqlCon.getCentraline()){
-                FetchData.getData(centraline);
+                jdata = FetchData.getData(centraline);
+                
+                 JSONArray c = jdata.getJSONArray("data");
+                    for (int i = 0 ; i < c.length(); i++) {
+                        JSONObject obj = c.getJSONObject(i);
+                        String A = obj.getString("A");
+                        String B = obj.getString("B");
+                        String C = obj.getString("C");
+                        System.out.println(A + " " + B + " " + C);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
