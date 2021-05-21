@@ -4,9 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
-
-import com.mysql.cj.xdevapi.JsonString;
-
 import org.json.JSONObject;
 
 public class FetchData {
