@@ -88,7 +88,7 @@ public class MyTimerTask extends TimerTask {
         TimerTask timerTask = new MyTimerTask();
         //running timer task as daemon thread
         Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 10*1000);
+        timer.scheduleAtFixedRate(timerTask, 0, 1 * 3600 * 1000);
         System.out.println("TimerTask started");
         //cancel after sometime
         try {
@@ -96,7 +96,7 @@ public class MyTimerTask extends TimerTask {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        timer.cancel(); //questo serve per fermare il programma dopo tot millisecondi 
+        //timer.cancel(); //questo serve per fermare il programma dopo tot millisecondi 
         
     }
 
