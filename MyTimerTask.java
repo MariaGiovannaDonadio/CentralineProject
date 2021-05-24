@@ -24,57 +24,57 @@ public class MyTimerTask extends TimerTask {
                         float rh = obj.getFloat("RH");
                         Sensore a = Helper.findSensore(sensori, "RH");
                         if(a != null){
-                            MysqlCon.insertOsservatione(rh, data, a.getId());
+                            MysqlCon.insertOsservazione(rh, data, a.getId());
                         }
                         float pm10 = obj.getFloat("PM10");
                         Sensore b = Helper.findSensore(sensori, "PM10");
                         if(b != null){
-                            MysqlCon.insertOsservatione(pm10, data, b.getId());
+                            MysqlCon.insertOsservazione(pm10, data, b.getId());
                         }
                         float co2 = obj.getFloat("CO2");
                         Sensore o = Helper.findSensore(sensori, "CO2");
                         if(c != null){
-                            MysqlCon.insertOsservatione(co2, data, o.getId());
+                            MysqlCon.insertOsservazione(co2, data, o.getId());
                         }
                         float pm25 = obj.getFloat("PM2.5");
                         Sensore d = Helper.findSensore(sensori, "PM2.5");
                         if(d != null){
-                            MysqlCon.insertOsservatione(pm25, data, d.getId());
+                            MysqlCon.insertOsservazione(pm25, data, d.getId());
                         }
                         float o3 = obj.getFloat("O3");
                         Sensore e = Helper.findSensore(sensori, "O3");
                         if(e != null){
-                            MysqlCon.insertOsservatione(o3, data, e.getId());
+                            MysqlCon.insertOsservazione(o3, data, e.getId());
                         }
                         float voc = obj.getFloat("VOC");
                         Sensore f = Helper.findSensore(sensori, "VOC");
                         if(f != null){
-                            MysqlCon.insertOsservatione(voc, data, f.getId());
+                            MysqlCon.insertOsservazione(voc, data, f.getId());
                         }
                         float noa = obj.getFloat("NO_A");
                         Sensore g = Helper.findSensore(sensori, "NO_A");
                         if(g != null){
-                            MysqlCon.insertOsservatione(noa, data, g.getId());
+                            MysqlCon.insertOsservazione(noa, data, g.getId());
                         }
                         float t = obj.getFloat("T");
                         Sensore h = Helper.findSensore(sensori, "T");
                         if(h != null){
-                            MysqlCon.insertOsservatione(t, data, h.getId());
+                            MysqlCon.insertOsservazione(t, data, h.getId());
                         }
                         float no2 = obj.getFloat("NO2");
                         Sensore l = Helper.findSensore(sensori, "NO2");
                         if(l != null){
-                            MysqlCon.insertOsservatione(no2, data, l.getId());
+                            MysqlCon.insertOsservazione(no2, data, l.getId());
                         }
                         float co = obj.getFloat("CO");
                         Sensore m = Helper.findSensore(sensori, "CO");
                         if(m != null){
-                            MysqlCon.insertOsservatione(co, data, m.getId());
+                            MysqlCon.insertOsservazione(co, data, m.getId());
                         }
                         float no2a = obj.getFloat("NO2_A");
                         Sensore n = Helper.findSensore(sensori, "NO2_A");
                         if(n != null){
-                            MysqlCon.insertOsservatione(no2a, data, n.getId());
+                            MysqlCon.insertOsservazione(no2a, data, n.getId());
                         }
                 }
             }

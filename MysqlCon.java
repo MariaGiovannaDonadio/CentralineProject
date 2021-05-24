@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,7 +51,7 @@ public class  MysqlCon {
 		return centraline;
 	}
 
-	public static void insertOsservatione(float valore, String date, int idSensore) throws SQLException {
+	public static void insertOsservazione(float valore, String date, int idSensore) throws SQLException {
 		
 		Connection myConn = null;
 		Statement myStmt = null;
@@ -63,8 +64,8 @@ public class  MysqlCon {
 			myStmt = myConn.createStatement();
 			
 			// 3. Execute SQL query
-			//myStmt.executeQuery("INSERT INTO Osservazioni VALUES ("+valore+","+date+","+idSensore+")");
-			System.out.println("INSERT INTO Osservazioni VALUES ("+valore+","+date+","+idSensore+")");
+			myStmt.executeUpdate("INSERT INTO Osservazioni VALUES ('0', '"+valore+"','"+date+"','"+idSensore+"')");
+
 		}
 		catch (Exception exc) {
 			exc.printStackTrace();
