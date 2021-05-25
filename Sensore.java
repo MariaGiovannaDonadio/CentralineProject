@@ -15,4 +15,8 @@ public class Sensore {
         return this.tipo;
     }
 
+    public String toString() {
+        return Integer.toString(this.id);
+    }
+
 }

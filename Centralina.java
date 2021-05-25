@@ -15,4 +15,8 @@ public class Centralina {
         return this.nome;
     }
 
+    public String toString(){
+        return this.nome;
+    }
+
 }
