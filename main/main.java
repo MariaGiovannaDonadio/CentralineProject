@@ -4,7 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import insert.Osservazioni;
 
-public class main {
+public class Main {
     public static void main(String args[]){
         TimerTask timerTask = new Osservazioni();
         Timer timer = new Timer(true);
