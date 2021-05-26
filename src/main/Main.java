@@ -2,11 +2,12 @@ package main;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
-import insert.Osservazioni;
+
+import task.MainTask;
 
 public class Main {
     public static void main(String args[]){
-        TimerTask timerTask = new Osservazioni();
+        TimerTask timerTask = new MainTask();
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(timerTask, 0, 30 * 1000);
         System.out.println("TimerTask started - insert 'stop' to end the program ");
@@ -14,7 +15,6 @@ public class Main {
         String line = "";
         while (!line.equals("stop") ){
             line = input.nextLine();
-            System.out.println("line: " + line);
         }
         System.out.println("TimerTask ended");
         input.close();

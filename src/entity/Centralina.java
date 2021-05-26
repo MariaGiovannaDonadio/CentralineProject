@@ -1,4 +1,4 @@
-package element;
+package entity;
 public class Centralina {
     private int id;
     private String nome;

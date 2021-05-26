@@ -1,0 +1,12 @@
+{
+    "apiBaseUrl": "<api base url>",
+    "database": { 
+        "dbms": "<mysql>",
+        "serverName": "<localhost>",
+        "port": "<port>",
+        "name": "<database name>",
+        "username": "<database username>",
+        "password": "<database password>"
+    }
+}
+

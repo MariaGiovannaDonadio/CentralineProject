@@ -1,4 +1,4 @@
-package element;
+package entity;
 public class Sensore {
     private int id;
     private String tipo;

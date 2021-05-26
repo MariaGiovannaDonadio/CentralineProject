@@ -1,5 +1,7 @@
-package element;
+package utils;
 import java.util.ArrayList;
+
+import entity.Sensore;
 
 public class Helper {
     

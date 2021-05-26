@@ -1,4 +1,4 @@
-package apiConnect;
+package utils;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Calendar;
@@ -7,8 +7,8 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 import org.json.JSONObject;
 
-public class FetchData {
-    public static JSONObject getData(String centraline) {
+public class Fetcher {
+    public static JSONObject getCentralinaData(String apitBaseUrl, String centralina) {
 
         URL url;
         try {
@@ -17,7 +17,7 @@ public class FetchData {
             cal.setTime(date); 
             int dayOfYear = cal.get(Calendar.DAY_OF_YEAR);
             Calendar year = GregorianCalendar.getInstance();
-            url = new URL("https://swh.fi.ibimet.cnr.it:8442/swhrest2/rest/download/j_get_mobile_data/"+centraline+"/"+year.get(Calendar.YEAR)+"/"+dayOfYear+"/1/IT");
+            url = new URL(apitBaseUrl + "/swhrest2/rest/download/j_get_mobile_data/" + centralina + "/" + year.get(Calendar.YEAR) + "/" + dayOfYear + "/1/IT");
    
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");

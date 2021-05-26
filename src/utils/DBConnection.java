@@ -1,23 +1,28 @@
-package dbConnect;
+package utils;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import element.Centralina;
-import element.Sensore;
 
-public class  MysqlCon {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import entity.Centralina;
+import entity.Sensore;
+
+public class  DBConnection {
 
 	private Connection myConn;
 
-	public MysqlCon (){
+	public DBConnection (){
 		this.myConn = null;
 	}
 
-	public void connect() throws SQLException {
-		myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_Centraline", "root" , "KOdakkdt1");
+	public void connect(JSONObject dbConfig) throws SQLException, JSONException, IOException {
+		myConn = DriverManager.getConnection("jdbc:" + dbConfig.getString("dbms") + "://" + dbConfig.getString("serverName")+ ":" + dbConfig.getString("port") + "/" + dbConfig.getString("name") , dbConfig.getString("username") , dbConfig.getString("password"));
 
 	}
 
@@ -59,17 +64,11 @@ public class  MysqlCon {
 
 	public void insertOsservazione(float valore, String date, int idSensore) throws SQLException {
 		
-		Statement myStmt = null;
+		System.out.println("Osservazione: Valore - "+ valore + ", Sensore - " + idSensore);
 		
+		Statement myStmt = null;
 		try {
-			System.out.println("Osservazione: valore - "+ valore + ", Sensore - " + idSensore);
-			// 1. Get a connection to database
-			myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_Centraline", "root" , "KOdakkdt1");
-			
-			// 2. Create a statement
 			myStmt = myConn.createStatement();
-			
-			// 3. Execute SQL query
 			myStmt.executeUpdate("INSERT INTO Osservazioni VALUES ('0', '"+valore+"','"+date+"','"+idSensore+"')");
 
 		}
@@ -88,21 +87,12 @@ public class  MysqlCon {
 	public ArrayList<Sensore> getSensori(int idCentralina) throws SQLException{
 
 		ArrayList<Sensore> sensori = new ArrayList<Sensore>();
-		Connection myConn = null;
 		Statement myStmt = null;
 		ResultSet myRs = null;
 		
 		try {
-			// 1. Get a connection to database
-			myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_Centraline", "root" , "KOdakkdt1");
-			
-			// 2. Create a statement
 			myStmt = myConn.createStatement();
-			
-			// 3. Execute SQL query
 			myRs = myStmt.executeQuery("SELECT idS, Tipo FROM Sensori WHERE idCentralina = " + idCentralina);
-			
-			// 4. Process the result set
 			while (myRs.next()) {
 				Sensore s = new Sensore(myRs.getInt("idS"), myRs.getString("Tipo"));
 				sensori.add(s);
