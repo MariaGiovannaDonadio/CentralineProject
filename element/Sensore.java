@@ -1,3 +1,4 @@
+package element;
 public class Sensore {
     private int id;
     private String tipo;

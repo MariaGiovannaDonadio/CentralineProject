@@ -1,3 +1,4 @@
+package apiConnect;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Calendar;
@@ -11,7 +12,6 @@ public class FetchData {
 
         URL url;
         try {
-   
             Date date = new Date();      
             Calendar cal = Calendar.getInstance();
             cal.setTime(date); 
@@ -27,19 +27,14 @@ public class FetchData {
             if (responsecode != 200) {
                 throw new RuntimeException("HttpResponseCode: " + responsecode);
                 } else {
-   
                 String inline = "";
                 Scanner scanner = new Scanner(url.openStream());
    
                 while (scanner.hasNext()) {
                     inline += scanner.nextLine();
-                }  
-                
-                scanner.close();
-                
+                }                  
+                scanner.close();          
                 JSONObject data_obj = new JSONObject(inline);
-
-                //System.out.println(data_obj);
                 return data_obj;
             }
         } catch (Exception e) {

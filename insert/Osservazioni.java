@@ -1,15 +1,19 @@
+package insert;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Timer;
 import java.util.TimerTask;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import apiConnect.FetchData;
+import dbConnect.MysqlCon;
+import element.Centralina;
+import element.Helper;
+import element.Sensore;
 
-public class MyTimerTask extends TimerTask {
+public class Osservazioni extends TimerTask {
 
     private MysqlCon dbConn;
 
-    public MyTimerTask (){
+    public Osservazioni (){
         this.dbConn = new MysqlCon();
     };
 
@@ -94,23 +98,5 @@ public class MyTimerTask extends TimerTask {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
-    public static void main(String args[]){
-        TimerTask timerTask = new MyTimerTask();
-        Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 30 * 1000);
-        System.out.println("TimerTask started - insert 'stop' to end the program ");
-        Scanner input = new Scanner(System.in);
-        String line = "";
-        while (!line.equals("stop") ){
-            line = input.nextLine();
-            System.out.println("line: " + line);
-        }
-        System.out.println("TimerTask ended");
-        input.close();
-        timer.cancel(); 
-        
-    }
-
-}
+    }    
+}    

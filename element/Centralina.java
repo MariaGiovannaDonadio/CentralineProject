@@ -1,3 +1,4 @@
+package element;
 public class Centralina {
     private int id;
     private String nome;
