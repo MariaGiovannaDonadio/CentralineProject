@@ -14,6 +14,6 @@ For java project you need to download an IDE, for example VSCode, and import the
 The program works if the following data are entered in the config.jason.sample file: the API you want to use and the information of the DB created.
 
 - lib: 
-This folder contains the java libraries to use. The first is used to manage json files, the second to create a link between java and dababase.
+This folder contains the java libraries to use. The first is used to manage json files, the second is used to create a link between java and dababase.
 
 
