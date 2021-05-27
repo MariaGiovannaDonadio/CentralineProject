@@ -9,7 +9,7 @@ public class Main {
     public static void main(String args[]){
         TimerTask timerTask = new MainTask();
         Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 30 * 1000);
+        timer.scheduleAtFixedRate(timerTask, 0, 60 * 60 * 1000); //the task runs every hour
         System.out.println("TimerTask started - insert 'stop' to end the program ");
         Scanner input = new Scanner(System.in);
         String line = "";
