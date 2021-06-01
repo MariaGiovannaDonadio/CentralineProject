@@ -17,3 +17,6 @@ The program works if the following data are entered in the config.jason.sample f
 This folder contains the java libraries to use. The first is used to manage json files, the second is used to create a link between java and dababase.
 
 
+javac -sourcepath src -cp lib/json-20210307.jar:lib/mysql-connector-java-8.0.25.jar -d classes src/**/*.java
+
+java -cp lib/json-20210307.jar:lib/mysql-connector-java-8.0.25.jar:classes main.Main
